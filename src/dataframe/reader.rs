@@ -4,12 +4,14 @@ extern crate rustc_serialize;
 #[derive(Debug)]
 pub struct StringDataFrame {
     pub features: Vec<Vec<String>>,
+    pub labels: Vec<i32>,
 }
 
 impl StringDataFrame {
     pub fn new() -> Self {
         StringDataFrame {
             features: Vec::new(),
+            labels: Vec::new(),
         }
     }
 
@@ -35,6 +37,7 @@ impl StringDataFrame {
             row_vec.push(row[index].parse().unwrap());
         }
         self.features.push(row_vec);
+        self.labels.push(row[feature_dim].parse().unwrap());
     }
 }
 
